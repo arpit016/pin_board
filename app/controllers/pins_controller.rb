@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-    
+    before_action :authenticate_user!, except: [:index]
     before_action :find_pin, only: [:edit, :show, :update, :destroy]
     
     def index
@@ -12,6 +12,7 @@ class PinsController < ApplicationController
     
     def create
         @pin = Pin.new(pin_params)
+        @pin.user = current_user
         
         if @pin.save
             flash[:notice] = "Successfully new pin created"
