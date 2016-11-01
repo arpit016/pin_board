@@ -1,6 +1,6 @@
 class PinsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
-    before_action :find_pin, only: [:edit, :show, :update, :destroy]
+    before_action :find_pin, only: [:edit, :show, :update, :destroy, :upvote]
     
     def index
         @pins = Pin.all.order("created_at DESC")
@@ -45,6 +45,11 @@ class PinsController < ApplicationController
             flash[:danger] = "There was some problem in deleting the Pin. Please try again later"
             redirect_to root_path
         end
+    end
+    
+    def upvote
+        @pin.upvote_by current_user
+        redirect_to :back
     end
     
     def show

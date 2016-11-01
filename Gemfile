@@ -25,6 +25,7 @@ gem 'simple_form'
 gem 'devise'
 gem "paperclip", "~> 5.0.0"
 gem 'masonry-rails'
+gem 'acts_as_votable', '~> 0.10.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
